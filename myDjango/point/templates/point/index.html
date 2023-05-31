@@ -1,0 +1,116 @@
+{% extends 'point/layout.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block main %}
+    <div class="point-page flex">
+        <div>
+            <h2>{{date_time_now}}</h2>
+        </div>
+        <div class="flex point-items">
+
+            <!-- Entry -->
+            {% if types.E == False %}
+                <div id="entry" class="point">
+            {% else %}
+                <div class="point hited hited-entry">
+            {% endif %}
+                    <div class="span-number">
+                        <span>1</span>
+                    </div>
+                    <div class="span-name">
+                        <span>Entry</span>
+                    </div>
+                    <div class="span-icon">
+                        <span style="font-size: 22px; float: left; margin-top: 30px; font-weight: 400;">
+                            {% if types.E != False %}
+                                {{types.E}}
+                            {%endif%}
+                        </span>
+                        <span class="material-symbols-outlined">login</span>
+                    </div>
+                </div>
+
+            <!-- Pause -->
+            {% if types.P == False %}
+                <div id="pause" class="point">
+            {% else %}
+                <div class="point hited hited-pause">
+            {% endif %}
+                <div class="span-number">
+                    <span>2</span>
+                </div>
+                <div class="span-name">
+                    <span>Pause</span>
+                </div>
+                <div class="span-icon">
+                    <span style="font-size: 22px; float: left; margin-top: 30px; font-weight: 400;">
+                        {% if types.P != False %}
+                            {{types.P}}
+                        {%endif%}
+                    </span>
+                    <span class="material-symbols-outlined">emoji_food_beverage</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex point-items">
+
+            <!-- Return -->
+            {% if types.R == False %}
+                <div id="return" class="point">
+            {% else %}
+                <div class="point hited hited-return">
+            {% endif %}
+                <div class="span-number">
+                    <span>3</span>
+                </div>
+                <div class="span-name">
+                    <span>Return</span>
+                </div>
+                <div class="span-icon">
+                    <span style="font-size: 22px; float: left; margin-top: 30px; font-weight: 400;">
+                        {% if types.R != False %}
+                            {{types.R}}
+                        {%endif%}
+                    </span>
+                    <span class="material-symbols-outlined">undo</span>
+                </div>
+            </div>
+
+             <!-- Quit -->
+            {% if types.Q == False %}
+                <div id="exit" class="point">
+            {% else %}
+                <div class="point hited hited-exit">
+            {% endif %}
+                <div class="span-number">
+                    <span>4</span>
+                </div>
+                <div class="span-name">
+                    <span>Exit</span>
+                </div>
+                <div class="span-icon">
+                    <span style="font-size: 22px; float: left; margin-top: 30px; font-weight: 400;">
+                        {% if types.Q != False %}
+                            {{types.Q}}
+                        {%endif%}
+                    </span>
+                    <span class="material-symbols-outlined">logout</span>
+                </div>
+            </div>
+        </div>
+            <div id="registers" class="flex">
+                Pontos registrados
+            </div>
+            
+    </div>
+    <div id="registers-points">
+        
+    </div>
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
