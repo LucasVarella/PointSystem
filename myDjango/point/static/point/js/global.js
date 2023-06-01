@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function(){
   if(document.getElementById('registers') !=undefined){
     document.getElementById('registers').onclick = function(e){
       document.querySelector('.point-page ').style.display = 'none';
-      document.getElementById('registers-points').style.display = 'block';
+      document.getElementById('registers-points').style.display = 'flex';
     }
   }
   
