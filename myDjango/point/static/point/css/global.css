@@ -213,7 +213,7 @@ h2{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     flex-wrap: wrap !important;
     justify-content: center;
-    padding: 15px;
+    padding: 25px 20px;
 }
 
 .registers-day{
@@ -238,17 +238,13 @@ h2{
     background-color: azure;
     padding: 7px;
     text-align: center;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 #close-registers{
-    width: 100%;
+    width: fit-content;
     text-align: right;
     cursor: pointer;
-}
-
-#close-registers span{
-    padding: 15px;
 }
 
 #close-registers span{
