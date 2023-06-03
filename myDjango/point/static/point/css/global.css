@@ -215,6 +215,7 @@ h2{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     flex-wrap: wrap !important;
     justify-content: center;
+    padding-bottom: 20px;
 }
 
 .registers-day{
@@ -222,7 +223,7 @@ h2{
     min-width: 200px;
     height: fit-content;
     background-color: white;
-    font-size: 22px;
+    font-size: 17px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     text-align: right;
@@ -240,6 +241,28 @@ h2{
     background-color: azure;
     padding: 7px;
     text-align: center;
+}
+
+#close-registers{
+    width: 100%;
+    text-align: right;
+    padding: 20px 30px 0px 0px;
+    cursor: pointer;
+}
+
+#close-registers span{
+    transition: 0.1s;
+}
+
+#close-registers span:hover{
+    transform: scale(1.1);
+}
+
+.alinhamento{
+    display: flex;
+    flex-wrap: wrap !important;
+    align-items: center;
+
 }
 
 @media (max-width: 600px){

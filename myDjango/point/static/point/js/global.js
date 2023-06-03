@@ -67,6 +67,17 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
   
+  // Close Registers
+  if(document.getElementById('close-registers') !=undefined){
+    document.getElementById('close-registers').onclick = function(e){
+      document.getElementById('registers-points').style.display = 'none';
+      document.querySelector('.point-page ').style.display = 'flex';
+      
+    }
+  }
+
+  
+
   document.querySelector('aside').dataset.status = localStorage.getItem('status');
 
 });

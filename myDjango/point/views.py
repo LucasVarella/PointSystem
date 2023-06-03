@@ -3,7 +3,10 @@ from django.http import JsonResponse
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Point
-from datetime import datetime
+
+from datetime import datetime, timedelta
+import calendar
+
 import json
 
 #Login
@@ -71,7 +74,18 @@ def index(request):
             for point in points:
                 types[point.type] = point.time[x]
                     
-            return render(request, "point/index.html", {"page": "index", "date_time_now": datetime.now(), "types": types})
+            week_points = []
+            for i in range(0,8):
+                d = datetime.today() - timedelta(days=i)
+                points = Point.objects.filter(day = d.day, month = d.month, year = d.year)
+                
+                points_type = {"E":False, "P":False, "R": False, "Q": False, "DAY": str(d.day).zfill(2) , "MONTH": calendar.month_name[d.month], "DATE": d.date, "NAME": calendar.day_name[calendar.weekday(d.year,d.month,d.day)] }
+                for point in points:
+                    points_type[point.type] = point
+                    
+                week_points.append(points_type)
+                
+            return render(request, "point/index.html", {"page": "index", "date_time_now": datetime.now(), "types": types, "week_points": week_points})
     
     if request.method == "POST":
         
@@ -121,7 +135,12 @@ def correction(request):
     if request.user.is_authenticated == False:
         return render(request, "point/login.html")
     else:
-        return render(request, "point/correction.html", {"page": "correction"})
+        
+        dates = []
+        for i in range(0,8):
+            d = datetime.today() - timedelta(days=i)
+            dates.append(d.day)
+        return render(request, "point/correction.html", {"page": "correction", "dates": dates})
 
 def sheet(request):
     if request.user.is_authenticated == False:

@@ -102,67 +102,32 @@
             </div>
         </div>
             <div id="registers" class="flex">
-                Pontos registrados
+                Week points
             </div>
             
     </div>
     <div id="registers-points">
-        <div class="registers-day">
-            <div class="day-title">31/05 - Quarta</div>
-            <div class="registers-item" style="border-left: 5px solid #5BB867;">08:00</div>
-            <div class="registers-item" style="border-left: 5px solid #76A1E8;">11:00</div>
-            <div class="registers-item" style="border-left: 5px solid #F2E37B;">12:12</div>
-            <div class="registers-item" style="border-left: 5px solid #E97777;">18:00</div>
+        <div id="close-registers"><span class="material-symbols-outlined">close</span></div>
+        <div style="display: flex; align-items: center;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                {% for day in week_points %}
+                <div class="registers-day">
+                    <div class="day-title">{{day.MONTH}} {{day.DAY}}, {{day.NAME}}</div>
+                    <div class="registers-item" style="border-left: 5px solid #5BB867;">{% if day.E != False %}{{day.E.time|slice:5}} {% else %} ---- {% endif %}</div>
+                    <div class="registers-item" style="border-left: 5px solid #76A1E8;">{% if day.P != False %}{{day.P.time|slice:5}} {% else %} ---- {% endif %}</div>
+                    <div class="registers-item" style="border-left: 5px solid #F2E37B;">{% if day.R != False %}{{day.R.time|slice:5}} {% else %} ---- {% endif %}</div>
+                    <div class="registers-item" style="border-left: 5px solid #E97777;">{% if day.Q != False %}{{day.Q.time|slice:5}} {% else %} ---- {% endif %}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <div style="padding: 0px 25px 0px 0px">
+                <div class="registers-item" style="border-left: 5px solid #5BB867;">Entry</div>
+                <div class="registers-item" style="border-left: 5px solid #76A1E8;">Pause</div>
+                <div class="registers-item" style="border-left: 5px solid #F2E37B;">Return</div>
+                <div class="registers-item" style="border-left: 5px solid #E97777;">Exit</div>
+            </div>
         </div>
-        <div class="registers-day">
-            <div class="day-title">30/05 - Terça</div>
-            <div class="registers-item" style="border-left: 5px solid #5BB867;">08:00</div>
-            <div class="registers-item" style="border-left: 5px solid #76A1E8;">11:00</div>
-            <div class="registers-item" style="border-left: 5px solid #F2E37B;">12:12</div>
-            <div class="registers-item" style="border-left: 5px solid #E97777;">18:00</div>
-        </div>
-        <div class="registers-day">
-            <div class="day-title">30/05 - Segunda</div>
-            <div class="registers-item" style="border-left: 5px solid #5BB867;">08:00</div>
-            <div class="registers-item" style="border-left: 5px solid #76A1E8;">11:00</div>
-            <div class="registers-item" style="border-left: 5px solid #F2E37B;">12:12</div>
-            <div class="registers-item" style="border-left: 5px solid #E97777;">18:00</div>
-        </div>
-        <div class="registers-day">
-            <div class="day-title">30/05 - Domingo</div>
-            <div class="registers-item" style="border-left: 5px solid #5BB867;">08:00</div>
-            <div class="registers-item" style="border-left: 5px solid #76A1E8;">11:00</div>
-            <div class="registers-item" style="border-left: 5px solid #F2E37B;">12:12</div>
-            <div class="registers-item" style="border-left: 5px solid #E97777;">18:00</div>
-        </div>
-        <div class="registers-day">
-            <div class="day-title">30/05 - Sábado</div>
-            <div class="registers-item" style="border-left: 5px solid #5BB867;">08:00</div>
-            <div class="registers-item" style="border-left: 5px solid #76A1E8;">11:00</div>
-            <div class="registers-item" style="border-left: 5px solid #F2E37B;">12:12</div>
-            <div class="registers-item" style="border-left: 5px solid #E97777;">18:00</div>
-        </div>
-        <div class="registers-day">
-            <div class="day-title">30/05 - Sexta</div>
-            <div class="registers-item" style="border-left: 5px solid #5BB867;">08:00</div>
-            <div class="registers-item" style="border-left: 5px solid #76A1E8;">11:00</div>
-            <div class="registers-item" style="border-left: 5px solid #F2E37B;">12:12</div>
-            <div class="registers-item" style="border-left: 5px solid #E97777;">18:00</div>
-        </div>
-        <div class="registers-day">
-            <div class="day-title">30/05 - Quinta</div>
-            <div class="registers-item" style="border-left: 5px solid #5BB867;">08:00</div>
-            <div class="registers-item" style="border-left: 5px solid #76A1E8;">11:00</div>
-            <div class="registers-item" style="border-left: 5px solid #F2E37B;">12:12</div>
-            <div class="registers-item" style="border-left: 5px solid #E97777;">18:00</div>
-        </div>
-        <div class="registers-day">
-            <div class="day-title">30/05 - Quarta</div>
-            <div class="registers-item" style="border-left: 5px solid #5BB867;">08:00</div>
-            <div class="registers-item" style="border-left: 5px solid #76A1E8;">11:00</div>
-            <div class="registers-item" style="border-left: 5px solid #F2E37B;">12:12</div>
-            <div class="registers-item" style="border-left: 5px solid #E97777;">18:00</div>
-        </div>
+        
     </div>
 {% endblock %}
 
