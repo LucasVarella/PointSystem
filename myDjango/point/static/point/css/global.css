@@ -61,7 +61,7 @@ h2{
 }
 
 #content-main{
-    margin: 40px 50px;
+    margin: 30px 40px;
     border-radius: 8px;
 }
 
@@ -203,11 +203,9 @@ h2{
 .popover-content {
     width: 70px;
     text-align: center;
- 
 }
 
 #registers-points{
-    width: 100%;
     height: fit-content;
     background-color: white;
     display: none;
@@ -215,12 +213,12 @@ h2{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     flex-wrap: wrap !important;
     justify-content: center;
-    padding-bottom: 20px;
+    padding: 15px;
 }
 
 .registers-day{
-    width: 200px;
-    min-width: 200px;
+    width: 20%;
+    min-width: 20%;
     height: fit-content;
     background-color: white;
     font-size: 17px;
@@ -228,7 +226,6 @@ h2{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     text-align: right;
     margin: 20px;
-    
 }
 
 .registers-item{
@@ -241,13 +238,17 @@ h2{
     background-color: azure;
     padding: 7px;
     text-align: center;
+    font-size: 16px;
 }
 
 #close-registers{
     width: 100%;
     text-align: right;
-    padding: 20px 30px 0px 0px;
     cursor: pointer;
+}
+
+#close-registers span{
+    padding: 15px;
 }
 
 #close-registers span{
