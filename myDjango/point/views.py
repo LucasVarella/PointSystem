@@ -134,13 +134,13 @@ def bank(request):
 def correction(request):
     if request.user.is_authenticated == False:
         return render(request, "point/login.html")
-    else:
+
+    if request.method == "GET":
+        return render(request, "point/correction.html", {"page": "correction"})
+    
+    if request.method == "POST":
+        pass
         
-        dates = []
-        for i in range(0,8):
-            d = datetime.today() - timedelta(days=i)
-            dates.append(d.day)
-        return render(request, "point/correction.html", {"page": "correction", "dates": dates})
 
 def sheet(request):
     if request.user.is_authenticated == False:
