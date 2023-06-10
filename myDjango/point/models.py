@@ -25,7 +25,7 @@ class Point(models.Model):
     def __str__(self):
         return (f"{self.type} - {self.day} - {self.user}")
 
-class Corrections(models.Model):
+class Correction(models.Model):
     TYPE_CHOICES = (
         ("E", "Entry"),
         ("P", "Pause"),
@@ -46,3 +46,4 @@ class Corrections(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=False)
     type = models.CharField(max_length=1, choices=TYPE_CHOICES, blank=False, null=False)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, blank=False, null=False, default="P")
+    motive = models.CharField(default="", max_length=100)

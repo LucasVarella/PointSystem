@@ -76,6 +76,32 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
 
+  // Send Correction
+  if(document.getElementById('send-correction') !=undefined){
+    document.getElementById('send-correction').onclick = function(e){
+      let date = document.getElementById('date-correction').value;
+      let type = document.getElementById('types-correction').value;
+      let time = document.getElementById('time-correction').value;
+      let motive = document.getElementById('motives-correction').value;
+      if (date=="" || type =="0" || time =="" || motive =="0"){
+        if (date ==""){
+          fillInputAlert('date-correction');
+        }
+        if (type ==0){
+          fillInputAlert('types-correction');
+        }
+        if (time ==""){
+          fillInputAlert('time-correction');
+        }
+        if (motive ==0){
+          fillInputAlert('motives-correction');
+        }
+      }else{
+        sendCorrection(date=date, type=type, correctTime=time, motive=motive);
+      }
+      
+    }
+  }
   
 
   document.querySelector('aside').dataset.status = localStorage.getItem('status');
@@ -124,6 +150,48 @@ function hitPoint(type, text){
       .catch(error => console.error(error))
     }
   })
+  
+}
+
+function sendCorrection(date, type, correctTime, motive){
+  fetch('/correction', {
+    method: 'POST',
+    body: JSON.stringify({ date: date,type: type, correctTime: correctTime, motive: motive}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data =>{
+    if (data.status == 'successful'){
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Correção enviada',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      console.log(data)
+      let timer = setTimeout(function(){
+        window.open('/correction','_self')
+      }, 2500)
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: data.msg,
+      })
+    }
+  })
+  .catch(error => console.error(error))
+}
+
+function fillInputAlert(element){
+  
+  document.getElementById(`${element}`).classList.add('fill-input');
+  setTimeout(function(){
+    document.getElementById(`${element}`).classList.remove('fill-input');
+  },2500)
   
 }
 

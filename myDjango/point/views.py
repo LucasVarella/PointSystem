@@ -2,7 +2,8 @@ from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 from django.http import JsonResponse
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Point
+from .models import Point, Correction
+from django.core.paginator import Paginator
 
 from datetime import datetime, timedelta
 import calendar
@@ -131,16 +132,35 @@ def bank(request):
     else:
         return render(request, "point/bank.html", {"page": "bank"})
 
+@csrf_exempt
 def correction(request):
     if request.user.is_authenticated == False:
         return render(request, "point/login.html")
 
     if request.method == "GET":
-        return render(request, "point/correction.html", {"page": "correction"})
+        page = Correction.objects.filter(user = request.user)
+        
+        return render(request, "point/correction.html", { "page": page})
     
     if request.method == "POST":
-        pass
         
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        date = body['date']
+        type = body['type']
+        correct_time = body['correctTime']
+        motive = body['motive']
+    
+        # date_post = datetime.strptime(date, "%d/%m/%y")
+        # date_now = datetime.strptime(datetime.now().date, "%d/%m/%y")
+        
+        # if date_post <=date_now:
+        correction = Correction(time= correct_time, type= type, user= request.user, day=date[8:10], month= date[5:7], year= date[0:4], motive=motive)
+        correction.save()
+        return JsonResponse({'status': 'successful'})
+        
+        # else:
+        #     return JsonResponse({'status': 'error', 'msg': 'No way to send correction for future data'})
 
 def sheet(request):
     if request.user.is_authenticated == False:

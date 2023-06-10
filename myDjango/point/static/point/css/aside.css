@@ -37,6 +37,7 @@ aside a:active{
     padding: 35px 0px;
     height: 110px;
     align-items: center;
+    min-width: 243px;
 }
 
 
@@ -86,7 +87,7 @@ aside a:active{
 
 /* OPENED */
 .aside-open{
-    width: fit-content;
+    width: 25%;
     opacity: 1;
 }
 
@@ -114,6 +115,8 @@ aside a:active{
 .aside-open #aside-avatar img{
     width: 90px;
     height: 90px;
+    min-width: 90px;
+    min-height: 90px;
     border: 2px solid white;
 }
 
@@ -124,6 +127,7 @@ aside a:active{
     width: 50%;
     min-width: 50%;
     text-align: center;
+
 }
 
 .aside-open #aside-avatar #aside-avatar-infos h4{
@@ -142,7 +146,7 @@ aside a:active{
     
 }
 
-.component-open-animation{
+.component-open-animation span{
     animation-name: open-components;
     animation-duration: 0.1s;
     animation-play-state: running;
@@ -152,36 +156,36 @@ aside a:active{
 }
 
 
+
 @keyframes open-aside {
     from {
-        min-width: 50px;
-        width: 50px;
+        min-width: 5%;
+        width: 5%;
     }
     to {
-        width: fit-content;
+        width: 25%;
         
     }
 }
 
 @keyframes open-components {
     from {
-        width: 35px;
-        
+        padding-left: 4px;
     }
     to {
-        width: 100%;
+        padding-left: 15px;
+        
     }
 }
 
-
 /* CLOSED */
 .aside-close{
-    width: 50px;
+    width: 5%;
     opacity: 1;
 }
 
 .aside-close #aside-div{
-    padding: 15px 5px;
+    padding: 15px;
 
 }
 
@@ -195,7 +199,6 @@ aside a:active{
 }
 
 .aside-close .component-sidebar{
-  
     display: flex;
     justify-content: center;
 }
@@ -207,7 +210,7 @@ aside a:active{
 
 .aside-close-animation{
     animation-name: close-aside;
-    animation-duration: 0.2s;
+    animation-duration: 0.1s;
     animation-play-state: running;
     animation-fill-mode: forwards;
     animation-timing-function:linear;
@@ -220,8 +223,7 @@ aside a:active{
         width: 25%;
     }
     to {
-        min-width: 49px;
-        width: 49px;
+        width: 5%;
     }
 }
 

@@ -11,11 +11,12 @@
             <div class="make-correction">
                 <div class="input-info">
                     <p>Date</p>
-                    <input type="date" name="date" id="date-correction">
+                    <input type="date" name="date" id="date-correction" required>
                 </div>
                 <div class="input-info">
                     <p>Type</p>
                     <select name="types" id="types-correction">
+                        <option value="0">Select</option>
                         <option value="E">Entry</option>
                         <option value="P">Pause</option>
                         <option value="R">Return</option>
@@ -23,8 +24,8 @@
                     </select>
                 </div>        
                 <div class="input-info">
-                    <p>Time</p>
-                    <input type="time" name="time" id="time-correction">
+                    <p>Correct time</p>
+                    <input type="time" name="time" id="time-correction" required>
                 </div>
                 <div class="input-info">
                     <p>Motives</p>
@@ -43,6 +44,56 @@
         </div>
         <div class="box-div">
             <h3>Corrections</h3>
+            <div class="corrections-history">
+                <div class="corrections-header">
+                    <span>Date</span>
+                    <span>Type</span>
+                    <span>Correct time</span>
+                    <span>Status</span>
+                </div>
+                <div class="corrections-all-itens">
+                    {% for item in page %}
+                        <div class="correction-item">
+                            <span>{{item.day}}/{{item.month}}/{{item.year}}</span>
+
+                            {% if item.type == 'E' %}
+                                <span >Entry</span>
+                            {% endif %}
+                            {% if item.type == 'P' %}
+                                <span>Pause</span>
+                            {% endif %}
+                            {% if item.type == 'R' %}
+                                <span>Return</span> 
+                            {% endif %} 
+                            {% if item.type == 'Q' %} 
+                                <span>Exit</span> 
+                            {% endif %}
+
+                            <span>{{item.time}}</span>
+
+                            
+                                <div class="corrections-status">
+                                    {% if item.status == 'P' %}
+                                        <div class="status-icon pending"></div>
+                                        <span>pending</span>
+                                        <span id="btn-cancel" class="material-symbols-outlined">cancel</span>
+                                    {% endif %}
+                                    {% if item.status == 'A' %}
+                                        <div class="status-icon approved"></div>
+                                        <span>approved</span>
+                                    {% endif %}
+                                    {% if item.status == 'R' %}
+                                        <div class="status-icon refused"></div>
+                                        <span>refused</span>
+                                    {% endif %}
+
+                                </div>      
+                            
+                        </div>
+                        <hr>
+                    {% endfor %}
+                <div>
+            </div>
         </div>
     </div>
 {% endblock %}

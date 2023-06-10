@@ -7,7 +7,9 @@ body{
     margin: 0;
     padding: 0;
     height: 100vh;
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Encode Sans', sans-serif; */
+    font-family: 'IBM Plex Sans', sans-serif;
     overflow-x: hidden;
     display: none;
 }
@@ -309,13 +311,114 @@ h2{
 
 .input-info input:focus,select:focus{
     box-shadow: 0px 10px 20px -13px rgba(32, 56, 117, 0.35);
-    border-color: #3d9cff;
+    border-color: #3d9cff !important;
     outline: 0;
 }
 
 .input-info p{
     margin-top: 0;
     font-size: 15px;
+}
+
+.fill-input{
+    border: 1px solid rgb(236, 76, 76) !important;
+}
+
+.page-links{
+
+}
+
+.page-links a {
+    color: white;
+    background-color: #085d7c;
+    padding: 7px;
+}
+
+.page-links a:hover{
+    color: white;
+}
+
+.page-links a:active{
+    color: white;
+}
+
+.corrections-history{
+    min-height: 100px;
+}
+
+.corrections-history hr{
+    margin: 0px;
+}
+
+.corrections-header{
+    width: 800px;
+    display: flex;
+}
+
+.corrections-header span{
+    color: grey !important;
+    padding: 30px 0px 20px 0px;
+    font-size: 16px !important;
+}
+
+.corrections-all-itens{
+    height: 390px;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.correction-item{
+    border-radius: 8px;
+    background-color: white;
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 800px;
+}
+
+.corrections-history span{
+    width: 20%;
+    font-size: 15px;
+    color: rgb(22, 22, 22);
+
+}
+
+.corrections-status{
+    display: flex;
+    align-items: center;
+    width: 25%;
+}
+.corrections-status span{
+    width: fit-content;
+}
+
+.status-icon{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.pending{
+    background-color: #3d9cff;
+}
+
+.approved{
+    background-color: #5fee8f;
+}
+
+.refused{
+    background-color: #e96363;
+}
+
+#btn-cancel{
+    color: #d43b55;
+    cursor: pointer;
+    font-size: 22px;
+    margin-left: 50px;
 }
 
 @media (max-width: 600px){

@@ -112,10 +112,10 @@
                 {% for day in week_points %}
                 <div class="registers-day">
                     <div class="day-title">{{day.MONTH}} {{day.DAY}}, {{day.NAME}}</div>
-                    <div class="registers-item" style="border-left: 5px solid #5BB867;">{% if day.E != False %}{{day.E.time|slice:5}} {% else %} ---- {% endif %}</div>
-                    <div class="registers-item" style="border-left: 5px solid #76A1E8;">{% if day.P != False %}{{day.P.time|slice:5}} {% else %} ---- {% endif %}</div>
-                    <div class="registers-item" style="border-left: 5px solid #F2E37B;">{% if day.R != False %}{{day.R.time|slice:5}} {% else %} ---- {% endif %}</div>
-                    <div class="registers-item" style="border-left: 5px solid #E97777;">{% if day.Q != False %}{{day.Q.time|slice:5}} {% else %} ---- {% endif %}</div>
+                    <div class="registers-item" style="border-left: 5px solid #5BB867;">{% if day.E != False %}{{day.E.time|slice:5}} {% else %} — {% endif %}</div>
+                    <div class="registers-item" style="border-left: 5px solid #76A1E8;">{% if day.P != False %}{{day.P.time|slice:5}} {% else %} — {% endif %}</div>
+                    <div class="registers-item" style="border-left: 5px solid #F2E37B;">{% if day.R != False %}{{day.R.time|slice:5}} {% else %} — {% endif %}</div>
+                    <div class="registers-item" style="border-left: 5px solid #E97777;">{% if day.Q != False %}{{day.Q.time|slice:5}} {% else %} — {% endif %}</div>
                 </div>
                 {% endfor %}
             </div>
