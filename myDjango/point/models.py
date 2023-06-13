@@ -16,8 +16,8 @@ class Point(models.Model):
     )
     
     time = models.CharField(max_length=5, blank=False, default='99:99')
-    day = models.SmallIntegerField(blank=False, default=0)
-    month = models.SmallIntegerField(blank=False, default=0)
+    day = models.CharField(blank=False, default=0, max_length=2)
+    month = models.CharField(blank=False, default=0, max_length=2)
     year = models.CharField(max_length=4, blank =False, default='2023')
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=False)
     type = models.CharField(max_length=1, choices=TYPE_CHOICES, blank=False, null=False)
@@ -40,8 +40,8 @@ class Correction(models.Model):
     )
     
     time = models.CharField(max_length=5, blank=False, default='99:99')
-    day = models.SmallIntegerField(blank=False, default=0)
-    month = models.SmallIntegerField(blank=False, default=0)
+    day = models.CharField(blank=False, default="0", max_length=2)
+    month = models.CharField(blank=False, default="0", max_length=2)
     year = models.CharField(max_length=4, blank =False, default='2023')
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=False)
     type = models.CharField(max_length=1, choices=TYPE_CHOICES, blank=False, null=False)

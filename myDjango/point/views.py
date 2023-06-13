@@ -138,9 +138,9 @@ def correction(request):
         return render(request, "point/login.html")
 
     if request.method == "GET":
-        page = Correction.objects.filter(user = request.user)
+        corrections = reversed(Correction.objects.filter(user = request.user))
         
-        return render(request, "point/correction.html", { "page": page})
+        return render(request, "point/correction.html", { "corrections": corrections, "page": "correction"})
     
     if request.method == "POST":
         

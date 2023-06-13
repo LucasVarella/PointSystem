@@ -52,7 +52,7 @@
                     <span>Status</span>
                 </div>
                 <div class="corrections-all-itens">
-                    {% for item in page %}
+                    {% for item in corrections %}
                         <div class="correction-item">
                             <span>{{item.day}}/{{item.month}}/{{item.year}}</span>
 
@@ -76,7 +76,7 @@
                                     {% if item.status == 'P' %}
                                         <div class="status-icon pending"></div>
                                         <span>pending</span>
-                                        <span id="btn-cancel" class="material-symbols-outlined">cancel</span>
+                                        <span id="btn-cancel" class="material-symbols-outlined">backspace</span>
                                     {% endif %}
                                     {% if item.status == 'A' %}
                                         <div class="status-icon approved"></div>
@@ -90,7 +90,7 @@
                                 </div>      
                             
                         </div>
-                        <hr>
+                        
                     {% endfor %}
                 <div>
             </div>

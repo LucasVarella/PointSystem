@@ -366,10 +366,11 @@ h2{
     overflow: scroll;
     overflow-x: hidden;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 .correction-item{
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     border-radius: 8px;
     background-color: white;
     margin: 5px 0px;
