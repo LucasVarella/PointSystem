@@ -102,6 +102,16 @@ document.addEventListener('DOMContentLoaded', function(){
       
     }
   }
+
+  // Cancel Correction
+  if(document.querySelector('.btn-cancel-correction') !=undefined){
+    document.querySelectorAll('.btn-cancel-correction').forEach(function(component){
+      component.onclick = function(e){
+        cancelCorrection(e.currentTarget.dataset.id);
+      }
+    })
+  }
+  
   
 
   document.querySelector('aside').dataset.status = localStorage.getItem('status');
@@ -153,6 +163,15 @@ function hitPoint(type, text){
   
 }
 
+function fillInputAlert(element){
+  
+  document.getElementById(`${element}`).classList.add('fill-input');
+  setTimeout(function(){
+    document.getElementById(`${element}`).classList.remove('fill-input');
+  },2500)
+  
+}
+
 function sendCorrection(date, type, correctTime, motive){
   fetch('/correction', {
     method: 'POST',
@@ -186,13 +205,37 @@ function sendCorrection(date, type, correctTime, motive){
   .catch(error => console.error(error))
 }
 
-function fillInputAlert(element){
-  
-  document.getElementById(`${element}`).classList.add('fill-input');
-  setTimeout(function(){
-    document.getElementById(`${element}`).classList.remove('fill-input');
-  },2500)
-  
+function cancelCorrection(correction_id){
+  fetch('/correction', {
+    method: 'PUT',
+    body: JSON.stringify({ id: correction_id}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data =>{
+    if (data.status == 'successful'){
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Apagado com sucesso!',
+        showConfirmButton: false,
+        timer: 1000
+      })
+      console.log(data)
+      let timer = setTimeout(function(){
+        window.open('/correction','_self')
+      }, 1000)
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: data.msg,
+      })
+    }
+  })
+  .catch(error => console.error(error))
 }
 
 window.addEventListener('load', () =>{

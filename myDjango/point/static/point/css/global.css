@@ -351,7 +351,7 @@ h2{
 }
 
 .corrections-header{
-    width: 800px;
+    width: 1000px;
     display: flex;
 }
 
@@ -377,7 +377,7 @@ h2{
     display: flex;
     align-items: center;
     padding: 10px;
-    width: 800px;
+    width: 1000px;
 }
 
 .corrections-history span{
@@ -415,10 +415,10 @@ h2{
     background-color: #e96363;
 }
 
-#btn-cancel{
-    color: #d43b55;
+.btn-cancel-correction{
+    color: #d43b55 !important;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 22px !important;
     margin-left: 50px;
 }
 

@@ -142,10 +142,10 @@ def correction(request):
         
         return render(request, "point/correction.html", { "corrections": corrections, "page": "correction"})
     
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
     if request.method == "POST":
         
-        body_unicode = request.body.decode('utf-8')
-        body = json.loads(body_unicode)
         date = body['date']
         type = body['type']
         correct_time = body['correctTime']
@@ -162,6 +162,12 @@ def correction(request):
         # else:
         #     return JsonResponse({'status': 'error', 'msg': 'No way to send correction for future data'})
 
+    if request.method == "PUT":
+        id = body['id']
+        correction_del = Correction.objects.get(id=id)
+        correction_del.delete()
+        return JsonResponse({'status': 'successful',})
+        
 def sheet(request):
     if request.user.is_authenticated == False:
         return render(request, "point/login.html")
