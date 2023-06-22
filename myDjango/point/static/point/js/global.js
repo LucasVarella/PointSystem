@@ -1,3 +1,5 @@
+const currentTimeZone = "America/Sao_Paulo";
+
 document.addEventListener('DOMContentLoaded', function(){
 
   // Start Sidebar by the atual status
@@ -83,21 +85,30 @@ document.addEventListener('DOMContentLoaded', function(){
       let type = document.getElementById('types-correction').value;
       let time = document.getElementById('time-correction').value;
       let motive = document.getElementById('motives-correction').value;
-      if (date=="" || type =="0" || time =="" || motive =="0"){
+      let department = document.getElementById('department-correction').value;
+      if (date=="" || type =="0" || time =="" || motive =="0" || department == "0"){
         if (date ==""){
           fillInputAlert('date-correction');
         }
-        if (type ==0){
+        if (type == 0){
           fillInputAlert('types-correction');
         }
         if (time ==""){
           fillInputAlert('time-correction');
         }
-        if (motive ==0){
+        if (motive == 0){
           fillInputAlert('motives-correction');
         }
+        if (department == 0){
+          fillInputAlert('department-correction');
+        }
       }else{
-        sendCorrection(date=date, type=type, correctTime=time, motive=motive);
+        if (validDate(date, timeZone= currentTimeZone)){
+          sendCorrection(date=date, type=type, correctTime=time, motive=motive, department=department);
+        }else{
+          fillInputAlert('date-correction');
+        }
+
       }
       
     }
@@ -107,16 +118,37 @@ document.addEventListener('DOMContentLoaded', function(){
   if(document.querySelector('.btn-cancel-correction') !=undefined){
     document.querySelectorAll('.btn-cancel-correction').forEach(function(component){
       component.onclick = function(e){
-        cancelCorrection(e.currentTarget.dataset.id);
+        const correction_id = e.currentTarget.dataset.id;
+        Swal.fire({
+          title: 'Are you sure?',
+          text: `You're about to delete the correction`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, hit it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            cancelCorrection(correction_id);
+          }
+        })
       }
     })
   }
-  
-  
 
   document.querySelector('aside').dataset.status = localStorage.getItem('status');
-
 });
+
+function validDate(date, timeZone){
+  const timeElapsed = new Date(Date.now());
+  var today = timeElapsed.toLocaleString("en-US", {timeZone: `${timeZone}`});
+  var selectDate = new Date(date);
+  var selectDate = selectDate.toLocaleString("en-US", {timeZone: `${timeZone}`});
+  if (selectDate > today){
+    return false;
+  }
+  return true;
+}
 
 function hitPoint(type, text){
   Swal.fire({
@@ -172,10 +204,10 @@ function fillInputAlert(element){
   
 }
 
-function sendCorrection(date, type, correctTime, motive){
+function sendCorrection(date, type, correctTime, motive, department){
   fetch('/correction', {
     method: 'POST',
-    body: JSON.stringify({ date: date,type: type, correctTime: correctTime, motive: motive}),
+    body: JSON.stringify({ date: date,type: type, correctTime: correctTime, motive: motive, department: department}),
     headers: {
       'Content-Type': 'application/json'
     }

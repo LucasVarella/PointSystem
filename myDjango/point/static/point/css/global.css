@@ -350,17 +350,6 @@ h2{
     margin: 0px;
 }
 
-.corrections-header{
-    width: 1000px;
-    display: flex;
-}
-
-.corrections-header span{
-    color: grey !important;
-    padding: 30px 0px 20px 0px;
-    font-size: 16px !important;
-}
-
 .corrections-all-itens{
     height: 390px;
     overflow: scroll;
@@ -378,22 +367,6 @@ h2{
     align-items: center;
     padding: 10px;
     width: 1000px;
-}
-
-.corrections-history span{
-    width: 20%;
-    font-size: 15px;
-    color: rgb(22, 22, 22);
-
-}
-
-.corrections-status{
-    display: flex;
-    align-items: center;
-    width: 25%;
-}
-.corrections-status span{
-    width: fit-content;
 }
 
 .status-icon{
@@ -419,7 +392,33 @@ h2{
     color: #d43b55 !important;
     cursor: pointer;
     font-size: 22px !important;
-    margin-left: 50px;
+    margin: 0px 50px;
+}
+
+.tamanho p{
+    width:155px;
+    font-size: 16px;
+}
+
+
+.corrections-header{
+    padding: 1px 0px 1px 15px;
+    width: fit-content;
+}
+
+.corrections-header p{
+    color: grey !important;
+    padding: 30px 0px 0px 0px;
+    font-weight: 600;
+}
+
+
+.item-correction{
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    padding: 5px 0px 5px 15px;
+    border-radius: 7px;
+    /* width: fit-content; */
+    margin: 5px;
 }
 
 @media (max-width: 600px){

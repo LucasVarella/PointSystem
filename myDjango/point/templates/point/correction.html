@@ -16,10 +16,10 @@
                 <div class="input-info">
                     <p>Department</p>
                     <select name="department" id="department-correction">
-                        <option value="0">SIT</option>
-                        <option value="E">DEV</option>
-                        <option value="P">SUP</option>
-                        <option value="R">Financeiro</option>
+                        <option value="0">Select</option>
+                        <option value="D">DEV</option>
+                        <option value="S">SUP</option>
+                        <option value="F">Financeiro</option>
                         <option value="Q">Comercial</option>
                     </select>
                 </div>
@@ -52,18 +52,53 @@
             </div>
             <label style="font-size: 14px; color: grey;">Preencha os campos para enviar um pedido de correção e aguarde um administrador da empresa deferir o pedido.</label>
         </div>
-        <div class="box-div">
+        <div class="box-div" style="padding-right: 5px;">
             <h3>Corrections</h3>
             <div class="corrections-history">
-                <div class="corrections-header">
-                    <span>Date</span>
-                    <span>Type</span>
-                    <span>Correct time</span>
-                    <span>Status</span>
+                <div class="tamanho flex corrections-header">
+                    <p>Date</p>
+                    <p>Type</p>
+                    <p>Correct time</p>
+                    <p>Status</p>
                 </div>
                 <div class="corrections-all-itens">
                     {% for item in corrections %}
-                        <div class="correction-item">
+
+                        <div class="tamanho flex item-correction">
+                            <p>{{item.day}}/{{item.month}}/{{item.year}}</p>
+                            
+                            {% if item.type == 'E' %}
+                                <p >Entry</p>
+                            {% endif %}
+                            {% if item.type == 'P' %}
+                                <p>Pause</p>
+                            {% endif %}
+                            {% if item.type == 'R' %}
+                                <p>Return</p> 
+                            {% endif %} 
+                            {% if item.type == 'Q' %} 
+                                <p>Exit</p> 
+                            {% endif %}
+
+                            <p>{{item.time}}</p>
+                            
+                            {% if item.status == 'P' %}
+                                <div class="flex">
+                                    <div class="status-icon pending"></div>
+                                    <span>pending</span>
+                                </div>
+                                <span class="btn-cancel-correction material-symbols-outlined" data-id="{{item.id}}">backspace</span>      
+                            {% endif %}
+                            {% if item.status == 'A' %}
+                                <div class="status-icon approved"></div>
+                                <span>approved</span>
+                            {% endif %}
+                            {% if item.status == 'R' %}
+                                <div class="status-icon refused"></div>
+                                <span>refused</span>
+                            {% endif %}  
+                        </div>
+                        <!-- <div class="correction-item">
                             <span>{{item.day}}/{{item.month}}/{{item.year}}</span>
 
                             {% if item.type == 'E' %}
@@ -99,7 +134,7 @@
                                 </div>      
                             
                         </div>
-                        
+                         -->
                     {% endfor %}
                 <div>
             </div>

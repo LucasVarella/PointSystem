@@ -150,12 +150,13 @@ def correction(request):
         type = body['type']
         correct_time = body['correctTime']
         motive = body['motive']
+        department = body['department']
     
         # date_post = datetime.strptime(date, "%d/%m/%y")
         # date_now = datetime.strptime(datetime.now().date, "%d/%m/%y")
         
         # if date_post <=date_now:
-        correction = Correction(time= correct_time, type= type, user= request.user, day=date[8:10], month= date[5:7], year= date[0:4], motive=motive)
+        correction = Correction(time= correct_time, type= type, user= request.user, day=date[8:10], month= date[5:7], year= date[0:4], motive=motive, department=department)
         correction.save()
         return JsonResponse({'status': 'successful'})
         

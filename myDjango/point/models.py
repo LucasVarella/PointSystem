@@ -47,3 +47,4 @@ class Correction(models.Model):
     type = models.CharField(max_length=1, choices=TYPE_CHOICES, blank=False, null=False)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, blank=False, null=False, default="P")
     motive = models.CharField(default="", max_length=100)
+    department = models.CharField(default="", max_length=100)
