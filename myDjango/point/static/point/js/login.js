@@ -1,19 +1,20 @@
 document.addEventListener('DOMContentLoaded', function(){
 
- //Login
- document.getElementById('sign-in').onclick = function(e){
+  //Login
+  document.getElementById('sign-in').onclick = function(e){
     let username = new String (document.getElementById('username').value).trim();
     let password = document.getElementById('password').value;
 
     if (username == '' || password == ''){
       msgLogin('Fill in the Username and Password.');
-      console.log('sem fetch');
     }else{
       login(username=username, password=password);
     }
   }
 
-
+  enterKeyLogin("username", "password", "focus");
+  enterKeyLogin("password", "sign-in", "click");
+  rememberLogin();
 });
 
 function login(username, password){
@@ -30,18 +31,13 @@ function login(username, password){
         window.open('/','_self')
       }else{
         msgLogin(data.msg);
-        console.log('com fetch');
       }
     })
     .catch(error => console.error(error))
 }
 
 function msgLogin(msg){
-
-  
   if (! document.querySelector('.toast')){
-  
-
     toast = document.createElement('div');
       toast.classList.add('toast');
         toast_content = document.createElement('div');
@@ -95,4 +91,45 @@ function msgLogin(msg){
       clearTimeout(timer1);
     });
   }
+}
+
+function enterKeyLogin(elementKey, elementEvent, command){
+  document.getElementById(elementKey).addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.key === "Enter") {
+      if(command === "focus"){
+        document.getElementById(elementEvent).focus();
+      }
+      if(command === "click"){
+        document.getElementById(elementEvent).click();
+      }
+      
+    }
+  });
+}
+
+function rememberLogin(){
+  
+  if (localStorage.getItem('remember') == undefined){
+    localStorage.setItem('remember', false);
+  }
+
+  if (localStorage.getItem('remember') === 'true'){
+    document.querySelector('#remember-checkbox').checked = true;
+    document.querySelector('#username').value = localStorage.getItem('username');
+  }
+  
+  document.querySelector('#remember-checkbox').onclick = function(){
+    let checked =  document.querySelector('#remember-checkbox').checked;
+    if (checked == false){
+      localStorage.setItem('remember', false);
+    }else{
+      localStorage.setItem('remember', true);
+    }
+  }
+
+  document.querySelector('#username').addEventListener('keyup', function(e){
+    let user = document.querySelector('#username').value;
+    localStorage.setItem('username', user);
+  });
 }

@@ -61,9 +61,9 @@
                     <p>Correct time</p>
                     <p>Status</p>
                 </div>
-                <div class="corrections-all-itens">
+                    <div class="corrections-all-itens">
                     {% for item in corrections %}
-
+                    
                         <div class="tamanho flex item-correction">
                             <p>{{item.day}}/{{item.month}}/{{item.year}}</p>
                             
@@ -98,43 +98,8 @@
                                 <span>refused</span>
                             {% endif %}  
                         </div>
-                        <!-- <div class="correction-item">
-                            <span>{{item.day}}/{{item.month}}/{{item.year}}</span>
-
-                            {% if item.type == 'E' %}
-                                <span >Entry</span>
-                            {% endif %}
-                            {% if item.type == 'P' %}
-                                <span>Pause</span>
-                            {% endif %}
-                            {% if item.type == 'R' %}
-                                <span>Return</span> 
-                            {% endif %} 
-                            {% if item.type == 'Q' %} 
-                                <span>Exit</span> 
-                            {% endif %}
-
-                            <span>{{item.time}}</span>
-
-                            
-                                <div class="corrections-status">
-                                    {% if item.status == 'P' %}
-                                        <div class="status-icon pending"></div>
-                                        <span>pending</span>
-                                        <span class="btn-cancel-correction material-symbols-outlined" data-id="{{item.id}}">backspace</span>
-                                    {% endif %}
-                                    {% if item.status == 'A' %}
-                                        <div class="status-icon approved"></div>
-                                        <span>approved</span>
-                                    {% endif %}
-                                    {% if item.status == 'R' %}
-                                        <div class="status-icon refused"></div>
-                                        <span>refused</span>
-                                    {% endif %}
-                                </div>      
-                            
-                        </div>
-                         -->
+                    {% empty %}
+                        <div style="padding: 15px;">not yet.</div>
                     {% endfor %}
                 <div>
             </div>
