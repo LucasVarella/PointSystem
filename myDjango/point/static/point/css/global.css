@@ -34,6 +34,25 @@ body{
 	background-color: #555;
 }
 
+#preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 999;
+    display: none;
+}
+
+#preloader .inner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 #content-page{
     display: flex;
 
@@ -432,6 +451,9 @@ h2{
     font-weight: 600;
 }
 
+.input-info p{
+    color: grey;
+}
 
 .item-correction{
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
@@ -439,6 +461,69 @@ h2{
     border-radius: 7px;
     /* width: fit-content; */
     margin: 5px;
+}
+
+.all-screen{
+    height: 71vh;
+}
+
+.boxs{
+    
+}
+
+.box-hour{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 3px;
+    padding: 20px 35px;
+    margin: 20px 25px 20px 0px;
+    width: 33%;
+    height: 70px;
+}
+
+.box-hour span{
+    font-size: 18px;
+}
+
+.box-hour p{
+    margin: 0;
+    margin-top: 5px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.wh{
+    border-left: 3px solid rgb(27, 27, 133);
+}
+
+.wh p{
+    color: rgb(27, 27, 133);
+}
+
+.ph{
+    border-left: 3px solid rgb(133, 128, 27);
+}
+
+.ph p{
+    color: rgb(133, 128, 27);
+}
+
+.shp{
+    border-left: 3px solid rgb(27, 133, 91);
+}
+
+.shp p{
+    color: rgb(27, 133, 91);
+}
+
+.shn{
+    border-left: 3px solid #e96363;
+}
+
+.shn p{
+    color: #e96363;
 }
 
 @media (max-width: 600px){

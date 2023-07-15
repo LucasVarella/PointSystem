@@ -41,8 +41,31 @@
             });
         </script>
 
+        <script>
+                let session = localStorage.getItem('session');
+
+                if( session == null){
+                    localStorage.setItem('session', true)
+                    //<![CDATA[
+                    $(window).on('load', function(){
+                        $('#preloader').css({'display': 'block'});
+                        $('#preloader').delay(250).fadeOut('fast');
+                        $('body').delay(250).css({'overflow': 'visible'});
+                        $('#preloader .inner').delay(200).fadeOut();
+                    })
+                    //]]>
+                    localStorage.setItem('ns','true')
+                }
+            
+        </script>
+
     </head>
     <body>
+        <div id="preloader">
+            <div class="inner">
+                <img src="{% static 'point/imgs/load.gif' %}"style="width:48px;height:48px;">
+            </div>
+        </div>
         <div id="content-page">
             <aside class="" data-status="">
                 <div id="aside-div">
@@ -53,7 +76,7 @@
                         <img class="circular-img" src="{% static 'point/imgs/img_avatar.jpg' %}" alt="Avatar">  
                         <div id="aside-avatar-infos">
                             <h4>Lucas Varella</h4>
-                            <span id="avatar-name" style="font-size: 14px; color: #70777b;">Desenvolvedor FullStack Sênior</span>
+                            <span id="avatar-name" style="font-size: 14px; color: #999ea2;">Desenvolvedor FullStack Sênior</span>
                         </div>
                     </div>
                     <div id="aside-components">
@@ -64,8 +87,10 @@
                                 {% else %}
                                     <div class="component-sidebar flex">
                                 {% endif %}
-                                        <span style="font-size: 30px; cursor: pointer;" class="material-symbols-outlined">alarm</span>
-                                        <span class="cs-description">Bater ponto</span>
+                                        <div class="span-component flex">
+                                            <span style="font-size: 30px; cursor: pointer;" class="material-symbols-outlined">alarm</span>
+                                            <span class="cs-description">Bater ponto</span>
+                                        </div>
                                 </div>
                             </a>
                             <a href="/correction">
@@ -74,8 +99,10 @@
                                 {% else %}
                                     <div class="component-sidebar flex">
                                 {% endif %}
-                                        <span style="font-size: 30px; cursor: pointer;" class="material-symbols-outlined">free_cancellation</span>
-                                        <span class="cs-description">Corrigir ausência</span>
+                                        <div class="span-component flex">
+                                            <span style="font-size: 30px; cursor: pointer;" class="material-symbols-outlined">free_cancellation</span>
+                                            <span class="cs-description">Corrigir ausência</span>
+                                        </div>
                                 </div>
                             </a>
                             <a href="/sheet">
@@ -84,8 +111,10 @@
                                 {% else %}
                                     <div class="component-sidebar flex">
                                 {% endif %}
-                                        <span style="font-size: 30px; cursor: pointer;" class="material-symbols-outlined">home_storage</span>
-                                        <span class="cs-description">Folha Mensal</span>
+                                        <div class="span-component flex">
+                                            <span style="font-size: 30px; cursor: pointer;" class="material-symbols-outlined">home_storage</span>
+                                            <span class="cs-description">Folha Mensal</span>
+                                        </div>
                                 </div>
                             </a>
                             <a href="/bank">
@@ -94,8 +123,11 @@
                                 {% else %}
                                     <div class="component-sidebar flex">
                                 {% endif %}
-                                        <span style="font-size: 30px; cursor: pointer;" class="material-symbols-outlined">safety_check</span>
-                                        <span class="cs-description">Banco de horas</span>
+                                        <div class="span-component flex">
+                                            <span style="font-size: 30px; cursor: pointer;" class="material-symbols-outlined">safety_check</span>
+                                            <span class="cs-description">Banco de horas</span>
+                                        </div>
+                                        
                                 </div>
                             </a>
                         {% else %}

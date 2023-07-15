@@ -1,7 +1,7 @@
 const currentTimeZone = "America/Sao_Paulo";
 
 document.addEventListener('DOMContentLoaded', function(){
-
+  
   // Start Sidebar by the atual status
   if (localStorage.getItem('status') === 'closed'){
     document.querySelector('aside').classList.add('aside-close');
